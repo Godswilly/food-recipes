@@ -2,8 +2,8 @@ import { createStore } from 'redux';
 import rootReducer from './rootReducer';
 
 export const initialState = {
-  recipes: [],
-  recipe: {},
+  meals: [],
+  meal: {},
   loading: true,
 };
 
