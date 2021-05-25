@@ -3,8 +3,8 @@ import mealReducer from './meals';
 import filterReducer from './filter';
 
 const rootReducer = combineReducers({
-  meal: mealReducer,
-  filter: filterReducer,
+  meals: mealReducer,
+  meal: filterReducer,
 });
 
 export default rootReducer;

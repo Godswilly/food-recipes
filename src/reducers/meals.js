@@ -1,34 +1,27 @@
-import { GET_MEALS, GET_MEAL, CHANGE_CATEGORIES } from '../actions/index';
+import { GET_MEALS, GET_DETAILS } from '../actions/index';
 
-const initialState = {
-  meals: [],
-  meal: {},
-  loading: true,
-};
-
-const mealReducer = (state = initialState, action) => {
+export const mealReducer = (state = 'all', action) => {
   switch (action.type) {
     case GET_MEALS:
       return {
         ...state,
         meals: action.payload,
-        loading: false,
       };
-    case GET_MEAL:
-      return {
-        ...state,
-        meal: action.payload,
-        loading: false,
-      };
-    case CHANGE_CATEGORIES:
-      return {
-        ...state,
-        meals: action.payload.data.meals,
-        loading: false,
-      };
+
     default:
       return state;
   }
 };
 
-export default mealReducer;
+export const filterReducer = (state = {}, action) => {
+  switch (action.type) {
+    case GET_DETAILS:
+      return {
+        ...state,
+        meal: action.payload,
+      };
+
+    default:
+    return state;
+  }
+};

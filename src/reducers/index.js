@@ -1,12 +1,6 @@
 import { createStore } from 'redux';
 import rootReducer from './rootReducer';
 
-export const initialState = {
-  meals: [],
-  meal: {},
-  loading: true,
-};
-
-const store = createStore(rootReducer, initialState);
+const store = createStore(rootReducer, {});
 
 export default store;
