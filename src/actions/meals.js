@@ -1,11 +1,11 @@
-import { GET_MEALS, GET_MEAL } from './index';
+import { GET_MEALS, GET_DETAILS } from './index';
 
-export const getMeal = () => ({
+export const getMeals = (meals) => ({
   type: GET_MEALS,
-  payload: meal,
+  payload: meals,
 });
 
-export const getMealDetails = () => ({
-  type: GET_MEAL,
+export const getDetails = (meal) => ({
+  type: GET_DETAILS,
   payload: meal,
 });
