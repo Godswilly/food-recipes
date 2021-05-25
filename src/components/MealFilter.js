@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const MealFilter = (props) => {
   const { handleChange, category } = props;
@@ -21,7 +22,7 @@ const MealFilter = (props) => {
 
 MealFilter.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  category: PropTypes.array.isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 export default MealFilter;

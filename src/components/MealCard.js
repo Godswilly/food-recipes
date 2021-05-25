@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 const MealCard = (props) => {
   const {
-    meal, image, id,
+    meal, img, id,
   } = props;
 
   return (
     <div>
       <Link to={`/meal/${id}/${meal}`}>
         <div data-testid="div" className="mealcard">
-          <img data-testid="image" alt={meal} src={image} />
+          <img data-testid="img" alt={meal} src={img} />
           <h3 data-testid="meal">
             {' '}
             {meal}
@@ -25,7 +25,7 @@ const MealCard = (props) => {
 
 MealCard.propTypes = {
   id: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
   meal: PropTypes.string.isRequired,
 };
 

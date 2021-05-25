@@ -1,6 +1,8 @@
 import React from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 import MealCard from '../components/MealCard';
+import MealFilter from '../components/MealFilter';
+import GET_MEAL from '../actions/index';
 
 class MealLists extends React.Component {
   constructor(props) {
@@ -13,8 +15,8 @@ class MealLists extends React.Component {
   }
 
   componentDidMount() {
-    const URL = 'hhttps://www.themealdb.com/api/json/v1/1/latest.php';
-    axios.get(`${URL}/categories.php`).then((res) => {
+    const URL = 'https://www.themealdb.com/api/json/v1/1/latest.php';
+    Axios.get(`${URL}/categories.php`).then((res) => {
       this.setState({ category: res.data.categories });
     });
     const { filter } = this.props;
@@ -28,16 +30,43 @@ class MealLists extends React.Component {
     this.getdata(e.target.value);
   };
 
-  showMeals = () => {
-    const { meals } = this.state.meal.map((meal) => {
-      return <MealCard img={meal.strMealThumb} meal={meal.strMeal} />;
+  getdata = (filter) => {
+    const URL = 'hhttps://www.themealdb.com/api/json/v1/1/latest.ph';
+    Axios.get(`${URL}/filter.php?c=${filter}`).then((res) => {
+      this.setState({ meal: res.data.meals });
     });
+  }
+
+  showMeals = () => {
+    let meals = null;
+    const { filter } = this.props;
+    if (filter !== 'all') {
+      const { meal } = this.state;
+      meals = meal.map((meal) => (
+        <MealCard
+          id={meal.idMeal}
+          key={meal.idMeal}
+          img={meal.strMealThumb}
+          meal={meal.strMeal}
+          gtdetails={this.gtdetails}
+        />
+      ));
+    }
 
     return meals;
   };
 
   render() {
-    return <div>{this.showMeals()}</div>;
+    const { category } = this.state;
+    return (
+      <div>
+        <MealFilter
+          handleChange={this.handleChange}
+          category={category}
+        />
+        <div className="list">{this.showMeals()}</div>
+      </div>
+    );
   }
 }
 
