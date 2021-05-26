@@ -4,8 +4,7 @@ import Axios from 'axios';
 import PropTypes from 'prop-types';
 import MealCard from '../components/MealCard';
 import MealFilter from '../components/MealFilter';
-import GET_MEAL from '../actions/index';
-import { getMeals, getDetails } from '../actions/meals';
+import { getMeals } from '../actions/meals';
 
 class MealLists extends React.Component {
   constructor(props) {
@@ -73,4 +72,19 @@ class MealLists extends React.Component {
   }
 }
 
-export default MealLists;
+const mapStateToProps = (state) => ({
+  foods: state.foods,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getMeals: (caty) => {
+    dispatch(getMeals(caty));
+  },
+});
+
+MealLists.propTypes = {
+  getMeals: PropTypes.func.isRequired,
+  foods: PropTypes.string.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MealLists);
