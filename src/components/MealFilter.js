@@ -7,7 +7,7 @@ const MealFilter = (props) => {
     <div className="filtered">
       <h3>Choose a Category</h3>
       <select className="filter" onChange={handleChange}>
-        <option value="All" key="All">
+        <option value="all" key="all">
           {' '}
           ---
           {' '}

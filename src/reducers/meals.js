@@ -5,7 +5,7 @@ export const mealReducer = (state = 'all', action) => {
     case GET_MEALS:
       return {
         ...state,
-        meals: action.payload,
+        foods: action.payload,
       };
 
     default:
@@ -18,10 +18,10 @@ export const filterReducer = (state = {}, action) => {
     case GET_DETAILS:
       return {
         ...state,
-        meal: action.payload,
+        food: action.payload,
       };
 
     default:
-    return state;
+      return state;
   }
 };

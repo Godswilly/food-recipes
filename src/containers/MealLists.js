@@ -1,15 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Axios from 'axios';
+import PropTypes from 'prop-types';
 import MealCard from '../components/MealCard';
 import MealFilter from '../components/MealFilter';
 import GET_MEAL from '../actions/index';
+import { getMeals, getDetails } from '../actions/meals';
 
 class MealLists extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      meal: [],
+      recipe: [],
       category: [],
     };
   }
@@ -19,30 +22,30 @@ class MealLists extends React.Component {
     Axios.get(`${URL}/categories.php`).then((res) => {
       this.setState({ category: res.data.categories });
     });
-    const { filter } = this.props;
-    this.getdata(filter);
+    const { foods } = this.props;
+    this.getdata(foods);
   }
 
   handleChange = (e) => {
-    this.setState({ meal: [] });
-    const { GET_MEAL } = this.props;
-    GET_MEAL(e.target.value);
+    this.setState({ recipe: [] });
+    const { getMeals } = this.props;
+    getMeals(e.target.value);
     this.getdata(e.target.value);
   };
 
-  getdata = (filter) => {
+  getdata = (foods) => {
     const URL = 'hhttps://www.themealdb.com/api/json/v1/1/latest.ph';
-    Axios.get(`${URL}/filter.php?c=${filter}`).then((res) => {
-      this.setState({ meal: res.data.meals });
+    Axios.get(`${URL}/foods.php?c=${foods}`).then((res) => {
+      this.setState({ recipe: res.data.meals });
     });
   }
 
   showMeals = () => {
     let meals = null;
-    const { filter } = this.props;
-    if (filter !== 'all') {
-      const { meal } = this.state;
-      meals = meal.map((meal) => (
+    const { foods } = this.props;
+    if (foods !== 'all') {
+      const { recipe } = this.state;
+      meals = recipe.map((meal) => (
         <MealCard
           id={meal.idMeal}
           key={meal.idMeal}
