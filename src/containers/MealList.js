@@ -1,58 +1,93 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { GETMEALS, FILTERMEALS, changeFilter } from '../redux/actions/index';
-import MealWrap from './MealWrap';
-import CategoryFilter from '../components/CategoryFilter';
+import PropTypes from 'prop-types';
+import MealCard from '../components/MealCard';
+import FilterMeals from '../components/FilterMeals';
+import { getMeal } from '../redux/actions/index';
+import Home from '../components/Home';
 
-const MealList = ({
-  getMeals, foods, changeCategories, changeFilter,
-}) => {
-  useEffect(() => {
-    getMeals();
-  }, [getMeals]);
+class MealList extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const handleFilterChange = (value) => {
-    if (value === 'All') {
-      getMeals();
-    } else {
-      changeFilter(value);
-      changeCategories(value);
-    }
+    this.state = {
+      details: [],
+      category: [],
+    };
+  }
+
+  componentDidMount() {
+    const URL = 'https://www.themealdb.com/api/json/v1/1/';
+    axios.get(`${URL}/categories.php`).then((res) => {
+      this.setState({ category: res.data.categories });
+    });
+    const { foods } = this.props;
+    this.getdata(foods);
+  }
+
+  handleChange = (e) => {
+    this.setState({ details: [] });
+    const { getMeal } = this.props;
+    getMeal(e.target.value);
+    this.getdata(e.target.value);
   };
 
-  return foods.length === 0 ? <h1>Loading......</h1> : (
-    <FilterWrap>
-      Filter by Catorgory
-      <CategoryFilter handleChange={handleFilterChange} />
-      <MealWrap>
-        { foods.map((food) => (
-          <Link key={food.idMeal} to={{ pathname: `/${food.idMeal}`, state: food }} className="cot">
-            <MealWrap key={food.idMeal} food={food} />
-          </Link>
-        ))}
-      </MealWrap>
-    </FilterWrap>
-  );
-};
+  getdata = (foods) => {
+    const URL = 'https://www.themealdb.com/api/json/v1/1/';
+    axios.get(`${URL}/filter.php?c=${foods}`).then((res) => {
+      this.setState({ details: res.data.meals });
+    });
+  }
 
-MealList.propTypes = {
-  foods: PropTypes.arrayOf(PropTypes.object).isRequired,
-  getMeals: PropTypes.func.isRequired,
-  changeCategories: PropTypes.func.isRequired,
-  changeFilter: PropTypes.func.isRequired,
-};
+  showMeals = () => {
+    let meals = [];
+    const { foods } = this.props;
+    if (foods !== 'all') {
+      const { details } = this.state;
+      meals = details.map((meal) => (
+        <MealCard
+          id={meal.idMeal}
+          key={meal.idMeal}
+          img={meal.strMealThumb}
+          meal={meal.strMeal}
+          gtdetails={this.gtdetails}
+        />
+      ));
+    } else {
+      return <Home />;
+    }
 
-const mapStateToProps = state => ({
-  foods: state.food.foods,
-  filter: state.filter,
+    return meals;
+  };
+
+  render() {
+    const { category } = this.state;
+    return (
+      <div>
+        <FilterMeals
+          handleChange={this.handleChange}
+          category={category}
+        />
+        <div className="list">{this.showMeals()}</div>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state) => ({
+  foods: state.foods,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getMeals: () => dispatch(GETMEALS()),
-  changeCategories: category => dispatch(FILTERMEALS(category)),
-  changeFilter: filter => dispatch(changeFilter(filter)),
+  getMeal: (cat) => {
+    dispatch(getMeal(cat));
+  },
 });
+
+MealList.propTypes = {
+  getMeal: PropTypes.func.isRequired,
+  foods: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MealList);
