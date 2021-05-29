@@ -1,21 +1,16 @@
 import React from 'react';
-import '../assets/styles/index.css';
-import {
-  BrowserRouter as Router, Route, Switch,
-} from 'react-router-dom';
-import MealList from '../containers/MealList';
-import MealDetails from '../containers/MealDetails';
+import { BrowserRouter, Route } from 'react-router-dom';
+import RecipesList from '../containers/RecipesList';
+import RecipeItem from './RecipeItem';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route exact path="/" component={MealList} />
-          <Route exact path="/meal/:id/:name" component={MealDetails} />
-        </Switch>
+    <BrowserRouter>
+      <div className="app panel-bg">
+        <Route exact path="/" component={RecipesList} />
+        <Route path="/recipe/:id" component={RecipeItem} />
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
