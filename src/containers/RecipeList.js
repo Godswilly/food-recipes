@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import MealCard from '../components/MealCard';
-import FilterMeals from '../components/FilterMeals';
+import FilterMeals from '../components/CategoryFilter';
 import { getMeal } from '../redux/actions/index';
 import Home from '../components/Home';
 
