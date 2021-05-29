@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { useParams, useHistory } from 'react-router';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { getDetails } from '../redux/actions/index';
+import { getDetails } from '../actions/index';
 
 const MealDetails = (props) => {
   // eslint-disable-next-line
   const { ingredient, details } = props.details;
   const { id } = useParams();
   const getId = (id) => {
-    const URL = 'https://www.themealdb.com/api/json/v1/1/';
-    axios.get(`${URL}/lookup.php?i=${id}`).then((res) => {
+    // const URL = 'https://www.themealdb.com/api/json/v1/1/';
+    axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`).then((res) => {
       const ingredient = [];
       for (let i = 1; i < 20; i += 1) {
         if (

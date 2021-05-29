@@ -18,8 +18,8 @@ class MealList extends React.Component {
   }
 
   componentDidMount() {
-    const URL = 'https://www.themealdb.com/api/json/v1/1/';
-    axios.get(`${URL}/categories.php`).then((res) => {
+    // const URL = 'https://www.themealdb.com/api/json/v1/1/';
+    axios.get('https://www.themealdb.com/api/json/v1/1/categories.php').then((res) => {
       this.setState({ category: res.data.categories });
     });
     const { foods } = this.props;
@@ -34,8 +34,8 @@ class MealList extends React.Component {
   };
 
   getdata = (foods) => {
-    const URL = 'https://www.themealdb.com/api/json/v1/1/';
-    axios.get(`${URL}/filter.php?c=${foods}`).then((res) => {
+    // const URL = 'https://www.themealdb.com/api/json/v1/1/';
+    axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${foods}`).then((res) => {
       this.setState({ details: res.data.meals });
     });
   }
