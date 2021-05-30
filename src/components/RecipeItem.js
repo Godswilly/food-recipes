@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { GET_RECIPE, CLEAR_DATA } from '../actions/index';
+import '../assets/styles/RecipeItem.scss';
 
 function RecipeItem({
   location, getRecipe, clearData, recipe,

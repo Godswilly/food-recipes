@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { GET_RECIPES, FILTER_RECIPELIST } from '../actions/index';
 import Recipe from '../components/Recipe';
 import CategoryFilter from '../components/CategoryFilter';
+import '../assets/styles/RecipesList.scss';
 
 const RecipesList = ({
   recipes, getRecipes, filterRecipeList,

@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import App from './components/App';
 import rootReducer from './reducers/index';
+import './assets/styles/index.css';
 
 const initialState = {};
 

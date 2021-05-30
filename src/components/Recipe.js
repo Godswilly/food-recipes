@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../assets/styles/Recipe.scss';
 
 const Recipe = ({ recipe }) => (
   <div className="recipe-page">

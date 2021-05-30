@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import RecipesList from '../containers/RecipesList';
 import RecipeItem from './RecipeItem';
+import '../assets/styles/index.css';
 
 function App() {
   return (
