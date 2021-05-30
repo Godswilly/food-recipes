@@ -21,7 +21,7 @@ In this project, I built a dynamic catalogue of recipes app using react/redux, a
 - Scss
 
 ## Live Demo
-[Live Demo]()
+[Live Demo](https://fervent-perlman-8ae569.netlify.app/)
 
 ## Getting Started
 
