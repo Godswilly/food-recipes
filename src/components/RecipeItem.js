@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -50,7 +51,7 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  fetchRecipe: (recipeId) => dispatch(GET_RECIPE(recipeId)),
+  getRecipe: (recipeId) => dispatch(GET_RECIPE(recipeId)),
   clearData: () => dispatch(CLEAR_DATA()),
 });
 

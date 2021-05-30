@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 const Recipe = ({ recipe }) => (
   <div className="recipe-page">
     <div className="cards">

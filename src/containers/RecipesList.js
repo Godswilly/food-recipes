@@ -26,7 +26,7 @@ const RecipesList = ({
       <div className="recipes-container">
         {recipes.map((recipe) => (
           <Link key={recipe.idMeal} to={{ pathname: `/recipe/${recipe.idMeal}`, state: recipe }}>
-            <Recipe key={recipe.idMeal} food={recipe} />
+            <Recipe key={recipe.idMeal} recipe={recipe} />
           </Link>
         ))}
       </div>
@@ -41,7 +41,7 @@ RecipesList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  recipes: state.recipes.foods_recipes,
+  recipes: state.recipes.food_recipes,
 });
 
 const mapDispatchToProps = (dispatch) => ({
