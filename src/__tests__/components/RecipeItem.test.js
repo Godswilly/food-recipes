@@ -34,7 +34,6 @@ const recipe = [
   },
 ];
 
-
 const setup = ({
   recipe, location, getRecipe, clearData,
 }) => shallow(
