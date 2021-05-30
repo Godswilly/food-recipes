@@ -19,7 +19,7 @@ const RecipesList = ({
   return recipes.length === 0 ? <div>Loading...</div> : (
     <div className="recipe-list">
       <div className="header">
-        <div className="header-title">Meal Recipe Catalogue</div>
+        <div className="header-title">Catalogue of Recipes</div>
         <div className="category-container">
           <CategoryFilter handleChange={handleFilterChange} />
         </div>
