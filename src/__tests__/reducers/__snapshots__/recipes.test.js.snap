@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`recipes reducer should handle GET RECIPE 1`] = `
+Object {
+  "food_item": undefined,
+}
+`;
+
+exports[`recipes reducer should handle Get RECIPES 1`] = `
+Object {
+  "food_recipes": undefined,
+}
+`;
+
+exports[`recipes reducer should handle RESET DATA 1`] = `
+Object {
+  "food_recipes": Array [],
+}
+`;
+
+exports[`recipes reducer should return the initial state 1`] = `
+Object {
+  "food_item": Object {},
+  "food_recipes": Array [],
+}
+`;
