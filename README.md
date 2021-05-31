@@ -1,11 +1,15 @@
 <h1 align="center">Catalogue of Recipes</h1>
 
 > 
-In this project, I built a dynamic catalogue of recipes app using react/redux, axios, promises etc.
+In this project, I built a dynamic catalogue of recipes app using react/redux, Axios, promises, etc.
 - `Recipes List page` with a list of recipes that could be filtered by some parameters; in this project, it's a list of recipes that can be filtered by ingredients (shrimp, broccoli, etc.)
 - `Recipe Item page` for the recipe details; in this example, the recipe detail page (Preview Recipe)
 
+In this application, a user can search for recipes by category and get a list of all the meals. The user can also click on a particular meal to see the details of the ingredients and instructions on how to prepare it.
+
 ![screenshot](./src/assets/images/meal.png)
+
+![screenshot](./src/assets/images/meal2.png)
 
 ## Built With
 
@@ -29,7 +33,7 @@ To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-- node.js must be installed on device
+- node.js must be installed on your device
 
 ### Setup
 
@@ -68,24 +72,20 @@ yarn test
 
 - [Github](https://github.com/Godswilly)
 - [Twitter](https://twitter.com/KaluAguKalu17)
-- [Linkedin](https://www.linkedin.com/in/kalu-agu-kalu/)
+- [Linkedin](https://www.linkedin.com/in/kaluagukalu/)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
+Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/Godswilly/food-recipes/issues).
 
 ## Show your support
 
-Give a ⭐️ if you like this project!
+Give and ⭐️ if you like this project!
 
 ## Acknowledgments
 
 - [Microverse](https://www.microverse.org/)
-- <a href="https://www.themealdb.com/api.php" target="_blank">Themealdb</a>
-- <a href="https://www.behance.net/gallery/11351281/NomNom" target="_blank">Design idea by Marc-Antoine Roy on Behance</a>
-
-## 📝 License
-
-This project is [MIT](lic.url) licensed.
+- <a href="https://www.themealdb.com/api.php" target="_blank">Themealdb API</a>
+- Design idea by <a href="https://www.behance.net/gallery/11351281/NomNom" target="_blank">Marc-Antoine Roy on Behance</a>
